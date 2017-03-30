@@ -30,11 +30,18 @@ class NowPlayingMoviesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath)
-        cell.textLabel?.text = movies[indexPath.row].title
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCustomCell
+        cell.movie = movies[indexPath.row]
         return cell
     }
-    
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let indexPath = tableView.indexPathForSelectedRow
+        if segue.identifier == "nowPlayingDetail" {
+            let detailVc = segue.destination as! NowPlayingDetailViewController
+            detailVc.movie = self.movies[(indexPath?.row)!]
+        }
+    }
     
 
 }
