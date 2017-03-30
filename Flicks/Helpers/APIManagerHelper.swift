@@ -12,7 +12,8 @@ import Foundation
 class APImanagerHelper: NSObject {
     
     static let sharedInstance = APImanagerHelper()
-    var movies = [Movie]()
+    var nowPlayingMovies = [Movie]()
+    var topRatedMovies = [Movie]()
     
     func getNowPlayingMoviesHelper(completionHandler: @escaping([Movie]) -> Void) {
         APImanager.sharedInstance.getNowPlayingMovies { (data) in
@@ -27,10 +28,30 @@ class APImanagerHelper: NSObject {
                 newMovie.vote_count = movie["vote_count"] as! Int
                 newMovie.vote_average = movie["vote_average"] as! Float
                 
-                self.movies.append(newMovie)
+                self.nowPlayingMovies.append(newMovie)
             }
-            completionHandler(self.movies)
+            completionHandler(self.nowPlayingMovies)
         }
+    }
+    
+    
+    func getTopRatedMoviesHelper(completionHandler: @escaping([Movie]) -> Void) {
+        APImanager.sharedInstance.getTopRatedMovies { (data) in
+            for topMovie in data {
+                let movie = Movie()
+                movie.title = topMovie["title"] as! String
+                movie.language = topMovie["original_language"] as! String
+                movie.overview = topMovie["overview"] as! String
+                movie.release_date = topMovie["release_date"] as! String
+                movie.poster_path = topMovie["poster_path"] as! String
+                movie.vote_count = topMovie["vote_count"] as! Int
+                movie.vote_average = topMovie["vote_average"] as! Float
+                
+                self.topRatedMovies.append(movie)
+            }
+            completionHandler(self.topRatedMovies)
+        }
+        
     }
     
     

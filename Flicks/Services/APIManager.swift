@@ -12,6 +12,7 @@ import AFNetworking
 class APImanager: NSObject {
     
     static let sharedInstance = APImanager()
+    let manager = AFHTTPSessionManager()
     
 //    func getAPIKey() {
 //        let myDict: NSDictionary?
@@ -25,7 +26,6 @@ class APImanager: NSObject {
 
     
     func getNowPlayingMovies(completionHandler: @escaping([[String: Any]]) -> Void) {
-        let manager = AFHTTPSessionManager()
         manager.get("https://api.themoviedb.org/3/movie/now_playing?api_key=e0eb8726a48468939860070cb3a0bc04&language=en-US&page=1", parameters: nil, progress: nil, success: { (operation, response) in
             
             if let dict = response as? [String: Any], let data = dict["results"] as? [[String: Any]] {
@@ -37,5 +37,23 @@ class APImanager: NSObject {
             print(error)
         }
     }
+    
+    func getTopRatedMovies(completionHandler: @escaping([[String: Any]]) -> Void) {
+        manager.get("https://api.themoviedb.org/3/movie/top_rated?api_key=e0eb8726a48468939860070cb3a0bc04&language=en-US&page=1", parameters: nil, progress: nil, success: { (operation, response) in
+            
+            if let dict = response as? [String: Any], let data = dict["results"] as? [[String: Any]] {
+                completionHandler(data)
+            }
+            
+        }) { (opration, error) in
+            print(error)
+        }
+    }
+    
+    
+    func getMoviesUnTime() {
+        
+    }
+    
     
 }

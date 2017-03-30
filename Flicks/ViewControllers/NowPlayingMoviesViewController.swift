@@ -15,6 +15,7 @@ class NowPlayingMoviesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getNowPlayingMovies()
+        
     }
 
     func getNowPlayingMovies() {
@@ -38,7 +39,7 @@ class NowPlayingMoviesViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let indexPath = tableView.indexPathForSelectedRow
         if segue.identifier == "nowPlayingDetail" {
-            let detailVc = segue.destination as! NowPlayingDetailViewController
+            let detailVc = segue.destination as! DetailViewController
             detailVc.movie = self.movies[(indexPath?.row)!]
         }
     }

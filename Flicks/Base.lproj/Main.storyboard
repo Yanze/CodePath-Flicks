@@ -70,7 +70,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agf-Gw-AZw">
-                                            <rect key="frame" x="122" y="40" width="230" height="94.5"/>
+                                            <rect key="frame" x="122" y="40" width="230" height="95"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -112,10 +112,10 @@
             </objects>
             <point key="canvasLocation" x="1096.8" y="-289.20539730134936"/>
         </scene>
-        <!--Now Playing Detail View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="YDz-0O-gpP">
             <objects>
-                <viewController storyboardIdentifier="DetailVC" id="abA-HY-R8U" customClass="NowPlayingDetailViewController" customModule="Flicks" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailVC" id="abA-HY-R8U" customClass="DetailViewController" customModule="Flicks" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xck-5u-Ah0"/>
                         <viewControllerLayoutGuide type="bottom" id="Gjp-0V-0HP"/>
@@ -152,7 +152,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CYP-JM-ETn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1856.8" y="-289.20539730134936"/>
+            <point key="canvasLocation" x="1914" y="28"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="q9V-Kv-RHV">
@@ -173,22 +173,48 @@
             </objects>
             <point key="canvasLocation" x="308" y="367.46626686656674"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Top Rated Movies View Controller-->
         <scene sceneID="bAW-dW-pyz">
             <objects>
-                <tableViewController id="xQc-Nj-uUF" sceneMemberID="viewController">
+                <tableViewController id="xQc-Nj-uUF" customClass="TopRatedMoviesViewController" customModule="Flicks" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="TYs-BH-28m">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.67035090980000001" green="0.80448717950000004" blue="0.04399727732" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ypu-gB-o3V">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TopRatedCell" rowHeight="150" id="ypu-gB-o3V" customClass="TopRatedMovieCell" customModule="Flicks" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ypu-gB-o3V" id="FdQ-py-Kw5">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ypu-gB-o3V" id="FdQ-py-Kw5" customClass="MovieCustomCell" customModule="Flicks" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WCS-Y4-6ws">
+                                            <rect key="frame" x="16" y="15" width="101" height="120"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKB-hG-wXJ">
+                                            <rect key="frame" x="125" y="15" width="227" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FCz-ZS-gHx">
+                                            <rect key="frame" x="125" y="44" width="227" height="91"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="movieImageView" destination="WCS-Y4-6ws" id="k2q-Ia-I7S"/>
+                                    <outlet property="overviewLabel" destination="FCz-ZS-gHx" id="Z9W-6h-MCX"/>
+                                    <outlet property="titleLabel" destination="UKB-hG-wXJ" id="feK-5c-olS"/>
+                                    <segue destination="abA-HY-R8U" kind="show" identifier="topratedDetail" id="wNr-5a-9Wi"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -200,11 +226,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g6L-gu-gOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1097" y="367"/>
+            <point key="canvasLocation" x="1096.8" y="366.56671664167919"/>
         </scene>
     </scenes>
     <resources>
         <image name="default_poster" width="306" height="455"/>
         <image name="nowPlaying" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="wNr-5a-9Wi"/>
+    </inferredMetricsTieBreakers>
 </document>

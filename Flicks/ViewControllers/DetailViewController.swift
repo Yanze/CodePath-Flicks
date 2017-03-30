@@ -9,7 +9,7 @@
 import UIKit
 import AFNetworking
 
-class NowPlayingDetailViewController: UIViewController {
+class DetailViewController: UIViewController {
     
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -26,8 +26,9 @@ class NowPlayingDetailViewController: UIViewController {
         loadMobiePoster()
         setupReleaseDateLabel()
         setupOverviewLabel()
-        
     }
+    
+    
     
     func setupScrollView() {
         let contentWidth = scrollView.bounds.width
@@ -35,7 +36,7 @@ class NowPlayingDetailViewController: UIViewController {
         
         scrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
         
-        grayView = UIView(frame: CGRect(x: 40, y: 400, width: contentWidth-80, height: 240))
+        grayView = UIView(frame: CGRect(x: 40, y: 400, width: contentWidth-80, height: 260))
         grayView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         scrollView.addSubview(grayView)
     }
@@ -61,7 +62,15 @@ class NowPlayingDetailViewController: UIViewController {
         overviewLabel.lineBreakMode = .byWordWrapping
         overviewLabel.numberOfLines = 0
         overviewLabel.font = UIFont(name: "PingFangSC-Light", size: 14)
-        overviewLabel.text = movie.overview
+        
+        if movie.overview.characters.count > 300 {
+            let range =  movie.overview.rangeOfComposedCharacterSequences(for: movie.overview.startIndex..<movie.overview.index(movie.overview.startIndex, offsetBy: 300))
+            overviewLabel.text = movie.overview.substring(with: range).appending("...")
+        }
+        else {
+            overviewLabel.text = movie.overview
+        }
+
         grayView.addSubview(overviewLabel)
         setupOverviewConstraints()
     }
