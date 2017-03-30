@@ -11,12 +11,21 @@ import SVProgressHUD
 
 class NowPlayingMoviesViewController: UITableViewController {
     
+    var refreshMovieControl: UIRefreshControl!
     var movies = [Movie]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         getNowPlayingMovies()
-        
+        setRefreshMovieControl()
+
+    }
+    
+    func setRefreshMovieControl() {
+        refreshMovieControl = UIRefreshControl()
+        refreshMovieControl.attributedTitle = NSAttributedString(string: "Pull to Refresh")
+        refreshMovieControl.addTarget(self, action: #selector(refreshMovieList), for: UIControlEvents.valueChanged)
+        tableView.addSubview(refreshMovieControl)
     }
 
     func getNowPlayingMovies() {
@@ -28,6 +37,14 @@ class NowPlayingMoviesViewController: UITableViewController {
                 self.tableView.reloadData()
                 SVProgressHUD.dismiss()
             }
+        }
+    }
+    
+    func refreshMovieList() {
+        APImanagerHelper.sharedInstance.getNowPlayingMoviesHelper { (movies) in
+            self.movies = movies
+            self.tableView.reloadData()
+            self.refreshMovieControl.endRefreshing()
         }
     }
     

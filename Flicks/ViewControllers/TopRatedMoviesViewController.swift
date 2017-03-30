@@ -11,11 +11,13 @@ import SVProgressHUD
 
 class TopRatedMoviesViewController: UITableViewController {
     
+    var refreshMovieControl: UIRefreshControl!
     var topRatedMovies = [Movie]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getTopRatedMovies()
+        setRefreshMovieControl()
     }
     
     func getTopRatedMovies() {
@@ -27,6 +29,21 @@ class TopRatedMoviesViewController: UITableViewController {
                 self.tableView.reloadData()
                 SVProgressHUD.dismiss()
             }
+        }
+    }
+    
+    func setRefreshMovieControl() {
+        refreshMovieControl = UIRefreshControl()
+        refreshMovieControl.attributedTitle = NSAttributedString(string: "Pull to Refresh")
+        refreshMovieControl.addTarget(self, action: #selector(refreshMovieList), for: UIControlEvents.valueChanged)
+        tableView.addSubview(refreshMovieControl)
+    }
+    
+    func refreshMovieList() {
+        APImanagerHelper.sharedInstance.getTopRatedMoviesHelper { (movies) in
+            self.topRatedMovies = movies
+            self.tableView.reloadData()
+            self.refreshMovieControl.endRefreshing()
         }
     }
     
