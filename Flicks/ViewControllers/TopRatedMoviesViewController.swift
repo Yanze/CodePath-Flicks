@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class TopRatedMoviesViewController: UITableViewController {
     
@@ -18,9 +19,14 @@ class TopRatedMoviesViewController: UITableViewController {
     }
     
     func getTopRatedMovies() {
-        APImanagerHelper.sharedInstance.getTopRatedMoviesHelper { (movies) in
-            self.topRatedMovies = movies
-            self.tableView.reloadData()
+        SVProgressHUD.show()
+        let when = DispatchTime.now() + 1
+        DispatchQueue.main.asyncAfter(deadline: when) { 
+            APImanagerHelper.sharedInstance.getTopRatedMoviesHelper { (movies) in
+                self.topRatedMovies = movies
+                self.tableView.reloadData()
+                SVProgressHUD.dismiss()
+            }
         }
     }
     

@@ -13,6 +13,8 @@
 		E033285C1E8C195B0031C2E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E033285B1E8C195B0031C2E9 /* Assets.xcassets */; };
 		E033285F1E8C195B0031C2E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E033285D1E8C195B0031C2E9 /* LaunchScreen.storyboard */; };
 		E03328671E8C1F330031C2E9 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = E03328661E8C1F330031C2E9 /* config.plist */; };
+		E065C6CD1E8DB75D006A9469 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E065C6CB1E8DB75D006A9469 /* AFNetworking.framework */; };
+		E065C6CE1E8DB75D006A9469 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E065C6CC1E8DB75D006A9469 /* SVProgressHUD.framework */; };
 		E0ACBA4C1E8C3ECD002C84E0 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ACBA4B1E8C3ECD002C84E0 /* Movie.swift */; };
 		E0ACBA4F1E8C3EDC002C84E0 /* APIManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ACBA4E1E8C3EDC002C84E0 /* APIManagerHelper.swift */; };
 		E0ACBA521E8C3EE7002C84E0 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ACBA511E8C3EE7002C84E0 /* APIManager.swift */; };
@@ -34,6 +36,8 @@
 		E033285E1E8C195B0031C2E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E03328601E8C195B0031C2E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E03328661E8C1F330031C2E9 /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
+		E065C6CB1E8DB75D006A9469 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "../../../Library/Developer/Xcode/DerivedData/Flicks-ccfbvwsdhklvkafqqfpedwhxzxvn/Build/Products/Debug-iphonesimulator/AFNetworking/AFNetworking.framework"; sourceTree = "<group>"; };
+		E065C6CC1E8DB75D006A9469 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = "Pods/../build/Debug-iphoneos/SVProgressHUD/SVProgressHUD.framework"; sourceTree = "<group>"; };
 		E0ACBA4B1E8C3ECD002C84E0 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		E0ACBA4E1E8C3EDC002C84E0 /* APIManagerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManagerHelper.swift; sourceTree = "<group>"; };
 		E0ACBA511E8C3EE7002C84E0 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -49,6 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E065C6CD1E8DB75D006A9469 /* AFNetworking.framework in Frameworks */,
+				E065C6CE1E8DB75D006A9469 /* SVProgressHUD.framework in Frameworks */,
 				D1B8C7565F8EDD28F15BAF7E /* Pods_Flicks.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,6 +65,8 @@
 		509B8F0CA238BDE62E6ED1FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E065C6CB1E8DB75D006A9469 /* AFNetworking.framework */,
+				E065C6CC1E8DB75D006A9469 /* SVProgressHUD.framework */,
 				82133C9965C98773ABD0661B /* Pods_Flicks.framework */,
 			);
 			name = Frameworks;
@@ -404,6 +412,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WQ56QXLK4A;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/SVProgressHUD",
+				);
 				INFOPLIST_FILE = Flicks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yanzeliu.Flicks;
@@ -418,6 +430,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = WQ56QXLK4A;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/SVProgressHUD",
+				);
 				INFOPLIST_FILE = Flicks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yanzeliu.Flicks;

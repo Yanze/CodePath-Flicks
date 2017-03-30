@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class NowPlayingMoviesViewController: UITableViewController {
     
@@ -19,9 +20,14 @@ class NowPlayingMoviesViewController: UITableViewController {
     }
 
     func getNowPlayingMovies() {
-        APImanagerHelper.sharedInstance.getNowPlayingMoviesHelper { (movies) in
-            self.movies = movies
-            self.tableView.reloadData()
+        SVProgressHUD.show()
+        let when = DispatchTime.now() + 1
+        DispatchQueue.main.asyncAfter(deadline: when) { 
+            APImanagerHelper.sharedInstance.getNowPlayingMoviesHelper { (movies) in
+                self.movies = movies
+                self.tableView.reloadData()
+                SVProgressHUD.dismiss()
+            }
         }
     }
     
