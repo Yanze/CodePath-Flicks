@@ -12,7 +12,7 @@ The following **required** functionality is completed:
 - [x] User can view movie details by tapping on a cell.
 - [x] User sees loading state while waiting for the API.
 - [ ] User sees an error message when there is a network error.
-- [ ] User can pull to refresh the movie list.
+- [x] User can pull to refresh the movie list.
 
 The following **optional** features are implemented:
 
@@ -42,7 +42,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [@2017] [Jessica Liu]
+    Copyright @2017 Jessica Liu
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
