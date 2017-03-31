@@ -9,13 +9,15 @@
 import UIKit
 import SVProgressHUD
 
-class TopRatedMoviesViewController: UITableViewController {
+class TopRatedMoviesViewController: UITableViewController, NetworkConnectionDelegate {
     
     var refreshMovieControl: UIRefreshControl!
     var topRatedMovies = [Movie]()
+    @IBOutlet var topRatedNetwokBar: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Helper.sharedInstance.delegate = self
         getTopRatedMovies()
         setRefreshMovieControl()
     }
@@ -47,6 +49,11 @@ class TopRatedMoviesViewController: UITableViewController {
         }
     }
     
+    @IBAction func dismissNetworkWarningBar(_ sender: UIButton) {
+        connectionBannerAnimateOut()
+    }
+    
+    
     //Mark: UItableView methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.topRatedMovies.count
@@ -68,6 +75,26 @@ class TopRatedMoviesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
+    }
+    
+    //MARK: network delegate method
+    func connectionBannerAnimateIn() {
+        topRatedNetwokBar.frame.size.width = view.frame.size.width
+        topRatedNetwokBar.center = view.center
+        topRatedNetwokBar.frame.origin.y = -69
+        topRatedNetwokBar.alpha = 0
+        view.addSubview(topRatedNetwokBar)
+        UIView.animate(withDuration: 1) {
+            self.topRatedNetwokBar.alpha = 1
+            self.topRatedNetwokBar.frame.origin.y = 0
+        }
+    }
+    
+    func connectionBannerAnimateOut() {
+        UIView.animate(withDuration: 0.2) {
+            self.topRatedNetwokBar.alpha = 0
+            self.topRatedNetwokBar.frame.origin.y = -69
+        }
     }
     
 }

@@ -107,8 +107,54 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="10M-WF-94v"/>
+                    <connections>
+                        <outlet property="warningBar" destination="CHd-lL-QMf" id="xXv-6Z-tf5"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1hl-qU-Dlm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="CHd-lL-QMf">
+                    <rect key="frame" x="0.0" y="0.0" width="370" height="69"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warning" translatesAutoresizingMaskIntoConstraints="NO" id="QwD-Ih-qXN">
+                            <rect key="frame" x="87" y="14.5" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="2da-fd-ZZ2"/>
+                                <constraint firstAttribute="height" constant="40" id="P3z-uE-n3W"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0w8-IS-Saw">
+                            <rect key="frame" x="324" y="15.5" width="30" height="38"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                            <state key="normal" title="x">
+                                <color key="titleColor" red="0.80573842009999996" green="0.80573842009999996" blue="0.80573842009999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="dismissWarningBar:" destination="nH8-ZU-Hc2" eventType="touchUpInside" id="pJW-q7-kYo"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LB5-s4-g2B">
+                            <rect key="frame" x="135" y="24" width="152" height="21"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.80470732869999995" green="0.029060338250000001" blue="0.2128685431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="0w8-IS-Saw" secondAttribute="bottom" constant="15.5" id="Bgo-E9-XpO"/>
+                        <constraint firstAttribute="trailing" secondItem="0w8-IS-Saw" secondAttribute="trailing" constant="16" id="Bvd-GL-9ao"/>
+                        <constraint firstItem="QwD-Ih-qXN" firstAttribute="top" secondItem="CHd-lL-QMf" secondAttribute="top" constant="14.5" id="Qkq-44-qYv"/>
+                        <constraint firstItem="0w8-IS-Saw" firstAttribute="top" secondItem="CHd-lL-QMf" secondAttribute="top" constant="15.5" id="SY4-Nr-UgG"/>
+                        <constraint firstItem="QwD-Ih-qXN" firstAttribute="centerY" secondItem="CHd-lL-QMf" secondAttribute="centerY" id="TTb-uf-XMQ"/>
+                        <constraint firstItem="LB5-s4-g2B" firstAttribute="centerY" secondItem="CHd-lL-QMf" secondAttribute="centerY" id="XuA-y2-qhv"/>
+                        <constraint firstAttribute="trailing" secondItem="LB5-s4-g2B" secondAttribute="trailing" constant="83" id="eIt-yA-s8g"/>
+                        <constraint firstAttribute="bottom" secondItem="QwD-Ih-qXN" secondAttribute="bottom" constant="14.5" id="no4-Ay-ceZ"/>
+                        <constraint firstItem="0w8-IS-Saw" firstAttribute="centerY" secondItem="CHd-lL-QMf" secondAttribute="centerY" id="rD5-dx-GcX"/>
+                        <constraint firstItem="LB5-s4-g2B" firstAttribute="leading" secondItem="QwD-Ih-qXN" secondAttribute="trailing" constant="8" id="u1b-7L-R2l"/>
+                        <constraint firstItem="QwD-Ih-qXN" firstAttribute="leading" secondItem="CHd-lL-QMf" secondAttribute="leading" constant="87" id="zOk-mE-Why"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="1096.8" y="-289.20539730134936"/>
         </scene>
@@ -171,7 +217,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q8p-Bq-0Hb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="308" y="367.46626686656674"/>
+            <point key="canvasLocation" x="290" y="484"/>
         </scene>
         <!--Top Rated Movies View Controller-->
         <scene sceneID="bAW-dW-pyz">
@@ -223,15 +269,60 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="VeC-DH-f22"/>
+                    <connections>
+                        <outlet property="topRatedNetwokBar" destination="jPV-KC-ryA" id="5BO-8G-ii9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g6L-gu-gOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="jPV-KC-ryA">
+                    <rect key="frame" x="0.0" y="0.0" width="370" height="69"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warning" translatesAutoresizingMaskIntoConstraints="NO" id="fWw-8u-rsi">
+                            <rect key="frame" x="87" y="14" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="h7v-iC-QKU"/>
+                                <constraint firstAttribute="height" constant="40" id="vKM-8W-wN0"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cja-Dk-iLH">
+                            <rect key="frame" x="135" y="24" width="152" height="21"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGv-jS-TXf">
+                            <rect key="frame" x="324" y="16" width="30" height="38"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                            <state key="normal" title="x">
+                                <color key="titleColor" red="0.80573842009999996" green="0.80573842009999996" blue="0.80573842009999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="dismissNetworkWarningBar:" destination="xQc-Nj-uUF" eventType="touchUpInside" id="fdl-QZ-AOX"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.80470732869999995" green="0.029060338250000001" blue="0.2128685431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="IGv-jS-TXf" secondAttribute="trailing" constant="16" id="2ze-eZ-ljt"/>
+                        <constraint firstItem="cja-Dk-iLH" firstAttribute="centerY" secondItem="jPV-KC-ryA" secondAttribute="centerY" id="3sG-3i-56g"/>
+                        <constraint firstAttribute="bottom" secondItem="IGv-jS-TXf" secondAttribute="bottom" constant="15.5" id="9Jg-Nf-KQ5"/>
+                        <constraint firstAttribute="trailing" secondItem="cja-Dk-iLH" secondAttribute="trailing" constant="83" id="GUz-Vn-naU"/>
+                        <constraint firstItem="IGv-jS-TXf" firstAttribute="top" secondItem="jPV-KC-ryA" secondAttribute="top" constant="15.5" id="V9U-3q-Map"/>
+                        <constraint firstItem="cja-Dk-iLH" firstAttribute="leading" secondItem="fWw-8u-rsi" secondAttribute="trailing" constant="8" id="X3c-JS-5Ax"/>
+                        <constraint firstItem="fWw-8u-rsi" firstAttribute="leading" secondItem="jPV-KC-ryA" secondAttribute="leading" constant="87" id="cBz-2N-vHs"/>
+                        <constraint firstItem="IGv-jS-TXf" firstAttribute="centerY" secondItem="jPV-KC-ryA" secondAttribute="centerY" id="cmh-q7-Ork"/>
+                        <constraint firstItem="fWw-8u-rsi" firstAttribute="centerY" secondItem="jPV-KC-ryA" secondAttribute="centerY" id="oYK-F4-r2Q"/>
+                    </constraints>
+                </view>
             </objects>
-            <point key="canvasLocation" x="1096.8" y="366.56671664167919"/>
+            <point key="canvasLocation" x="1097" y="478"/>
         </scene>
     </scenes>
     <resources>
         <image name="default_poster" width="306" height="455"/>
         <image name="nowPlaying" width="25" height="25"/>
+        <image name="warning" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wNr-5a-9Wi"/>
