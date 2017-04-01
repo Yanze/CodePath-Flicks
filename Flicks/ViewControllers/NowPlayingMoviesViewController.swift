@@ -9,11 +9,14 @@
 import UIKit
 import SVProgressHUD
 
-class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDelegate {
+class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     
     var refreshMovieControl: UIRefreshControl!
     var movies = [Movie]()
     @IBOutlet var warningBar: UIView!
+    var searchController = UISearchController(searchResultsController: nil)
+    var filteredMovies = [Movie]()
+    var detectedText = ""
     
 
     override func viewDidLoad() {
@@ -21,6 +24,15 @@ class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDe
         Helper.sharedInstance.delegate = self
         getNowPlayingMovies()
         setRefreshMovieControl()
+        
+        // search bar
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        definesPresentationContext = true
+        
+        self.navigationItem.titleView = searchController.searchBar
+        
 
     }
     
@@ -53,12 +65,23 @@ class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDe
     
     //MARK: tableview methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filteredMovies.count
+        }
         return self.movies.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCustomCell
-        cell.movie = movies[indexPath.row]
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCustomCell
+//        cell.movie = movies[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell")! as! MovieCustomCell
+        if searchController.isActive && searchController.searchBar.text != "" {
+            cell.movie = filteredMovies[indexPath.row]
+        }
+        else {
+            cell.movie = movies[indexPath.row]
+        }
         return cell
     }
 
@@ -93,6 +116,18 @@ class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDe
             self.warningBar.alpha = 0
             self.warningBar.frame.origin.y = -69
         }
+    }
+    
+    //MARK: search bar delegate methods
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        filteredMovies = movies.filter { movie in
+            return movie.title.lowercased().contains(searchText.lowercased())
+        }
+        tableView.reloadData()
     }
     
 

@@ -145,7 +145,7 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="1096.8" y="-289.20539730134936"/>
+            <point key="canvasLocation" x="1097" y="-287"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="YDz-0O-gpP">
@@ -319,6 +319,6 @@
         <image name="warning" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Hyp-HC-tmH"/>
+        <segue reference="wNr-5a-9Wi"/>
     </inferredMetricsTieBreakers>
 </document>
