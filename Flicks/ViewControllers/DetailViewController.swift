@@ -21,6 +21,8 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = movie.title
+        navigationController?.navigationBar.tintColor = .white
         setupScrollView()
         setupTitleLabel()
         loadMobiePoster()
@@ -32,12 +34,12 @@ class DetailViewController: UIViewController {
     
     func setupScrollView() {
         let contentWidth = scrollView.bounds.width
-        let contentHeight = scrollView.bounds.height + 20
+        let contentHeight = scrollView.bounds.height + 200
         
         scrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
         
-        grayView = UIView(frame: CGRect(x: 40, y: 400, width: contentWidth-80, height: 260))
-        grayView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        grayView = UIView(frame: CGRect(x: 40, y: scrollView.frame.height - 120, width: scrollView.frame.width - 40, height: 260))
+        grayView.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         scrollView.addSubview(grayView)
     }
     
@@ -51,8 +53,8 @@ class DetailViewController: UIViewController {
     }
     
     func loadMobiePoster() {
-        let baseURL = "https://image.tmdb.org/t/p/w185/"
-        posterImageView.setImageWith(URL(string: baseURL.appending(movie.poster_path))!, placeholderImage: UIImage(named: "default_poster"))
+        let baseURL = "https://image.tmdb.org/t/p/original"
+        self.posterImageView.setImageWith(URL(string: baseURL.appending(self.movie.poster_path))!, placeholderImage: UIImage(named: "default_poster"))
     }
     
     func setupOverviewLabel() {
@@ -80,6 +82,7 @@ class DetailViewController: UIViewController {
         releaseDateLabel.translatesAutoresizingMaskIntoConstraints = false
         releaseDateLabel.textColor = .white
         releaseDateLabel.font = UIFont(name: "PingFangSC-Light", size: 12)
+         
         releaseDateLabel.text = movie.release_date
         grayView.addSubview(releaseDateLabel)
         setupReleaseDateLabelConstraints()
