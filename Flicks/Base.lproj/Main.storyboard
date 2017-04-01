@@ -159,8 +159,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_poster" translatesAutoresizingMaskIntoConstraints="NO" id="1aw-iW-Cfm">
-                                <rect key="frame" x="0.0" y="54" width="375" height="564"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1aw-iW-Cfm">
+                                <rect key="frame" x="0.0" y="59" width="375" height="559"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oGE-yJ-4T1">
                                 <rect key="frame" x="0.0" y="-1" width="375" height="668"/>
@@ -177,8 +177,8 @@
                             <constraint firstItem="Gjp-0V-0HP" firstAttribute="top" secondItem="1aw-iW-Cfm" secondAttribute="bottom" id="Ytq-d7-59n"/>
                             <constraint firstAttribute="trailing" secondItem="1aw-iW-Cfm" secondAttribute="trailing" id="cFP-DB-qyY"/>
                             <constraint firstItem="1aw-iW-Cfm" firstAttribute="leading" secondItem="D8O-zx-We6" secondAttribute="leading" id="df5-cw-Ylm"/>
+                            <constraint firstItem="1aw-iW-Cfm" firstAttribute="top" secondItem="xck-5u-Ah0" secondAttribute="bottom" constant="-5" id="q47-Ss-saB"/>
                             <constraint firstAttribute="trailing" secondItem="oGE-yJ-4T1" secondAttribute="trailing" id="vjI-4P-k9p"/>
-                            <constraint firstItem="1aw-iW-Cfm" firstAttribute="top" secondItem="xck-5u-Ah0" secondAttribute="bottom" constant="-10" id="xMS-l0-4To"/>
                         </constraints>
                     </view>
                     <connections>
@@ -211,7 +211,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="default_poster" width="306" height="455"/>
         <image name="nowPlaying" width="25" height="25"/>
         <image name="warning" width="25" height="25"/>
     </resources>

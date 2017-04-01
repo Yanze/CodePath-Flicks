@@ -33,11 +33,24 @@ class MovieCustomCell: UITableViewCell {
             overviewLabel.text = overview
         }
         if let imageLink = movie?.poster_path {
-            let baseURL = "https://image.tmdb.org/t/p/w185/"
-            movieImageView.setImageWith(URL(string: baseURL.appending(imageLink))!, placeholderImage: UIImage(named: "default_poster"))
+            let imageURL = "https://image.tmdb.org/t/p/w185/".appending(imageLink)
+            let imageRequest = NSURLRequest(url: NSURL(string: imageURL)! as URL) as URLRequest
+            
+            movieImageView.setImageWith(imageRequest, placeholderImage: nil, success: { (imgRequest, imgResponse, image) in
+                if imgResponse != nil {
+                    self.movieImageView.alpha = 0
+                    self.movieImageView.image = image
+                    UIView.animate(withDuration: 0.3, animations: {
+                        self.movieImageView.alpha = 1
+                    })
+                }else {
+                    self.movieImageView.image = image
+                }
+                
+            }) { (imageRequest, imageResponse, error) in
+                print(error)
+            }
         }
-
-        
     }
     
     

@@ -29,8 +29,7 @@ class DetailViewController: UIViewController {
         setupReleaseDateLabel()
         setupOverviewLabel()
     }
-    
-    
+
     
     func setupScrollView() {
         let contentWidth = scrollView.bounds.width
@@ -53,8 +52,23 @@ class DetailViewController: UIViewController {
     }
     
     func loadMobiePoster() {
-        let baseURL = "https://image.tmdb.org/t/p/original"
-        self.posterImageView.setImageWith(URL(string: baseURL.appending(self.movie.poster_path))!, placeholderImage: UIImage(named: "default_poster"))
+        let imageURL = "https://image.tmdb.org/t/p/original".appending(self.movie.poster_path)
+        let imageRequest = NSURLRequest(url: NSURL(string: imageURL)! as URL) as URLRequest
+        
+        posterImageView.setImageWith(imageRequest, placeholderImage: nil, success: { (imgRequest, imgResponse, image) in
+            if imgResponse != nil {
+                self.posterImageView.alpha = 0
+                self.posterImageView.image = image
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.posterImageView.alpha = 1
+                })
+            }else {
+                self.posterImageView.image = image
+            }
+            
+        }) { (imageRequest, imageResponse, error) in
+            print(error)
+        }
     }
     
     func setupOverviewLabel() {
