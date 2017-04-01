@@ -15,9 +15,6 @@ class MovieCustomCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     
-    
-    
-    
     var movie: Movie? {
         didSet {
             overviewLabel.lineBreakMode = .byTruncatingTail
