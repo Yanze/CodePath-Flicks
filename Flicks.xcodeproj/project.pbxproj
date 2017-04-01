@@ -24,7 +24,6 @@
 		E0ACBA521E8C3EE7002C84E0 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ACBA511E8C3EE7002C84E0 /* APIManager.swift */; };
 		E0ACBA551E8C3EEF002C84E0 /* NowPlayingMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ACBA541E8C3EEF002C84E0 /* NowPlayingMoviesViewController.swift */; };
 		E0ACBA591E8C5E6F002C84E0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ACBA581E8C5E6F002C84E0 /* DetailViewController.swift */; };
-		E0EC7B5D1E8D8E0300687D30 /* TopRatedMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EC7B5C1E8D8E0300687D30 /* TopRatedMoviesViewController.swift */; };
 		E0F2F0FE1E8F2CDE00C086B5 /* BaseCustomClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F2F0FD1E8F2CDE00C086B5 /* BaseCustomClass.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,7 +49,6 @@
 		E0ACBA511E8C3EE7002C84E0 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		E0ACBA541E8C3EEF002C84E0 /* NowPlayingMoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingMoviesViewController.swift; sourceTree = "<group>"; };
 		E0ACBA581E8C5E6F002C84E0 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		E0EC7B5C1E8D8E0300687D30 /* TopRatedMoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopRatedMoviesViewController.swift; sourceTree = "<group>"; };
 		E0F2F0FD1E8F2CDE00C086B5 /* BaseCustomClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCustomClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,7 +162,6 @@
 			children = (
 				E0ACBA541E8C3EEF002C84E0 /* NowPlayingMoviesViewController.swift */,
 				E0ACBA581E8C5E6F002C84E0 /* DetailViewController.swift */,
-				E0EC7B5C1E8D8E0300687D30 /* TopRatedMoviesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -297,7 +294,6 @@
 				E0ACBA521E8C3EE7002C84E0 /* APIManager.swift in Sources */,
 				E065C6D61E8DCE29006A9469 /* MoviesCustomCell.swift in Sources */,
 				E065C6D01E8DC38D006A9469 /* Reachability.swift in Sources */,
-				E0EC7B5D1E8D8E0300687D30 /* TopRatedMoviesViewController.swift in Sources */,
 				E0F2F0FE1E8F2CDE00C086B5 /* BaseCustomClass.swift in Sources */,
 				E065C6D21E8DC3AA006A9469 /* Helpers.swift in Sources */,
 				E0ACBA551E8C3EEF002C84E0 /* NowPlayingMoviesViewController.swift in Sources */,

@@ -22,24 +22,50 @@ class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDe
     override func viewDidLoad() {
         super.viewDidLoad()
         Helper.sharedInstance.delegate = self
-        getNowPlayingMovies()
         setRefreshMovieControl()
+        setupSearchBar()
         
-        // search bar
+        if let selectedTabIndex = tabBarController?.selectedIndex {
+            switch selectedTabIndex {
+            case 0:
+                print(0)
+                getNowPlayingMovies()
+            case 1:
+                getTopRatedMovies()
+            default:
+                break
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+    }
+
+    func setupSearchBar() {
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         self.searchController.hidesNavigationBarDuringPresentation = false
         definesPresentationContext = true
         
         self.navigationItem.titleView = searchController.searchBar
-        
-
     }
     
     func setRefreshMovieControl() {
         refreshMovieControl = UIRefreshControl()
         refreshMovieControl.attributedTitle = NSAttributedString(string: "Pull to Refresh")
-        refreshMovieControl.addTarget(self, action: #selector(refreshMovieList), for: UIControlEvents.valueChanged)
+        if let selectedTabIndex = tabBarController?.selectedIndex {
+            switch selectedTabIndex {
+            case 0:
+                refreshMovieControl.addTarget(self, action: #selector(refreshPlayingMovieList), for: UIControlEvents.valueChanged)
+            case 1:
+                refreshMovieControl.addTarget(self, action: #selector(refreshTopRatedMovieList), for: UIControlEvents.valueChanged)
+            default:
+                break
+            }
+        }
+        
         tableView.addSubview(refreshMovieControl)
     }
 
@@ -55,8 +81,28 @@ class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDe
         }
     }
     
-    func refreshMovieList() {
+    func getTopRatedMovies() {
+        SVProgressHUD.show()
+        let when = DispatchTime.now() + 1
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            APImanagerHelper.sharedInstance.getTopRatedMoviesHelper { (movies) in
+                self.movies = movies
+                self.tableView.reloadData()
+                SVProgressHUD.dismiss()
+            }
+        }
+    }
+    
+    func refreshPlayingMovieList() {
         APImanagerHelper.sharedInstance.getNowPlayingMoviesHelper { (movies) in
+            self.movies = movies
+            self.tableView.reloadData()
+            self.refreshMovieControl.endRefreshing()
+        }
+    }
+    
+    func refreshTopRatedMovieList() {
+        APImanagerHelper.sharedInstance.getTopRatedMoviesHelper { (movies) in
             self.movies = movies
             self.tableView.reloadData()
             self.refreshMovieControl.endRefreshing()
@@ -72,9 +118,6 @@ class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDe
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCustomCell
-//        cell.movie = movies[indexPath.row]
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell")! as! MovieCustomCell
         if searchController.isActive && searchController.searchBar.text != "" {
             cell.movie = filteredMovies[indexPath.row]
