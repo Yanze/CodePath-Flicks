@@ -18,6 +18,7 @@ class DetailViewController: UIViewController {
     var releaseDateLabel: UILabel!
     var grayView: UIView!
     var movie = Movie()
+    @IBOutlet weak var dismissButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,29 @@ class DetailViewController: UIViewController {
         loadMobiePoster()
         setupReleaseDateLabel()
         setupOverviewLabel()
+        setupDismissButton()
+    }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
+//    }
+//    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+//    }
+    
+    
+    @IBAction func dismissDetailVC(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func setupDismissButton() {
+        dismissButton.setTitleColor(.white, for: .normal)
+        dismissButton.backgroundColor = .red
+        dismissButton.layer.cornerRadius = dismissButton.frame.height / 2
+        dismissButton.layer.masksToBounds = true
     }
 
     
@@ -58,7 +82,7 @@ class DetailViewController: UIViewController {
             if imgResponse != nil {
                 self.posterImageView.alpha = 0
                 self.posterImageView.image = image
-                UIView.animate(withDuration: 0.2, animations: {
+                UIView.animate(withDuration: 0.1, animations: {
                     self.posterImageView.alpha = 1
                 })
             }else {

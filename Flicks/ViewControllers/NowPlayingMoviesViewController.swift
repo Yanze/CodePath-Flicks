@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 
-class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDelegate, UISearchBarDelegate, UISearchResultsUpdating {
+class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDelegate, UISearchBarDelegate, UISearchResultsUpdating, UIViewControllerTransitioningDelegate {
     
     var refreshMovieControl: UIRefreshControl!
     var movies = [Movie]()
@@ -17,6 +17,7 @@ class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDe
     var searchController = UISearchController(searchResultsController: nil)
     var filteredMovies = [Movie]()
     var detectedText = ""
+    var transition = CircularTransition()
     
 
     override func viewDidLoad() {
@@ -119,6 +120,11 @@ class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDe
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell")! as! MovieCustomCell
+        
+        let customColorView = UIView()
+        customColorView.backgroundColor = UIColor(red: 254/255, green: 36/255, blue: 48/255, alpha: 0.4)
+        cell.selectedBackgroundView = customColorView
+        
         if searchController.isActive && searchController.searchBar.text != "" {
             cell.movie = filteredMovies[indexPath.row]
         }
@@ -127,14 +133,15 @@ class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDe
         }
         return cell
     }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let indexPath = tableView.indexPathForSelectedRow
-        if segue.identifier == "nowPlayingDetail" {
-            let detailVc = segue.destination as! DetailViewController
-            detailVc.movie = self.movies[(indexPath?.row)!]
-        }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = self.storyboard!.instantiateViewController(withIdentifier: "DetailVC") as! DetailViewController
+        detailVC.transitioningDelegate = self
+        detailVC.modalPresentationStyle = .custom
+        detailVC.movie = self.movies[indexPath.row]
+        self.present(detailVC, animated: true, completion: nil)
     }
+    
     
     @IBAction func dismissWarningBar(_ sender: UIButton) {
         connectionBannerAnimateOut()
@@ -173,6 +180,24 @@ class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDe
         tableView.reloadData()
     }
     
+    // circular transition delegate methods
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .present
+        let indexPath = tableView.indexPathForSelectedRow
+        let cell = tableView.cellForRow(at: indexPath!) as! MovieCustomCell
+        transition.startingPoint = cell.contentView.center
+        transition.circleColor = cell.movieImageView.backgroundColor!
+        return transition
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.transitionMode = .dismiss
+        let indexPath = tableView.indexPathForSelectedRow
+        let cell = tableView.cellForRow(at: indexPath!) as! MovieCustomCell
+        transition.startingPoint = cell.contentView.center
+        transition.circleColor = cell.movieImageView.backgroundColor!
+        return transition
+    }
 
 }
 
