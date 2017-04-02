@@ -19,6 +19,8 @@ class DetailViewController: UIViewController {
     var grayView: UIView!
     var movie = Movie()
     @IBOutlet weak var dismissButton: UIButton!
+    @IBOutlet weak var highResImageView: UIImageView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,18 +33,7 @@ class DetailViewController: UIViewController {
         setupOverviewLabel()
         setupDismissButton()
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        UIApplication.shared.statusBarStyle = UIStatusBarStyle.default
-//    }
-//    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
-//    }
-    
-    
+       
     @IBAction func dismissDetailVC(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -75,23 +66,28 @@ class DetailViewController: UIViewController {
     }
     
     func loadMobiePoster() {
-        let imageURL = "https://image.tmdb.org/t/p/original".appending(self.movie.poster_path)
-        let imageRequest = NSURLRequest(url: NSURL(string: imageURL)! as URL) as URLRequest
-        
-        posterImageView.setImageWith(imageRequest, placeholderImage: nil, success: { (imgRequest, imgResponse, image) in
+        let imagelowResURL = "https://image.tmdb.org/t/p/w185/".appending(self.movie.poster_path)
+        let imageLoeResRequest = NSURLRequest(url: NSURL(string: imagelowResURL)! as URL) as URLRequest
+        posterImageView.setImageWith(imageLoeResRequest, placeholderImage: nil, success: { (imgRequest, imgResponse, image) in
             if imgResponse != nil {
-                self.posterImageView.alpha = 0
+                // image was not cached, fade in image
+                self.highResImageView.alpha = 0
                 self.posterImageView.image = image
-                UIView.animate(withDuration: 0.1, animations: {
-                    self.posterImageView.alpha = 1
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.highResImageView.alpha = 1
                 })
             }else {
+                // image was cached, just update the image
                 self.posterImageView.image = image
             }
             
         }) { (imageRequest, imageResponse, error) in
             print(error)
         }
+
+        let imageURL = "https://image.tmdb.org/t/p/original".appending(self.movie.poster_path)
+        posterImageView.setImageWith(URL(string: imageURL)!)
+
     }
     
     func setupOverviewLabel() {

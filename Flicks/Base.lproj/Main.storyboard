@@ -60,7 +60,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Bd-8I-iMn" id="L8b-Ay-OFJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="149.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agf-Gw-AZw">
@@ -167,9 +167,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1aw-iW-Cfm">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oGE-yJ-4T1">
-                                <rect key="frame" x="0.0" y="169" width="375" height="498"/>
-                            </scrollView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L6d-uy-iFF">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2B-m8-FUI">
                                 <rect key="frame" x="168" y="28" width="39" height="40"/>
                                 <constraints>
@@ -184,11 +184,18 @@
                                     <action selector="dismissDetailVC:" destination="abA-HY-R8U" eventType="touchUpInside" id="eoe-o6-hZu"/>
                                 </connections>
                             </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oGE-yJ-4T1">
+                                <rect key="frame" x="0.0" y="169" width="375" height="498"/>
+                            </scrollView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="Gjp-0V-0HP" firstAttribute="top" secondItem="L6d-uy-iFF" secondAttribute="bottom" id="Eze-Mi-3DR"/>
+                            <constraint firstAttribute="trailing" secondItem="L6d-uy-iFF" secondAttribute="trailing" id="H2B-CI-YPy"/>
                             <constraint firstItem="oGE-yJ-4T1" firstAttribute="leading" secondItem="D8O-zx-We6" secondAttribute="leading" id="HfC-sG-BKD"/>
                             <constraint firstItem="oGE-yJ-4T1" firstAttribute="top" secondItem="1aw-iW-Cfm" secondAttribute="bottom" constant="-498" id="KbD-AK-eCs"/>
+                            <constraint firstItem="L6d-uy-iFF" firstAttribute="leading" secondItem="D8O-zx-We6" secondAttribute="leading" id="TUd-Ai-XV9"/>
                             <constraint firstItem="Gjp-0V-0HP" firstAttribute="top" secondItem="oGE-yJ-4T1" secondAttribute="bottom" id="Xcn-cb-hvw"/>
+                            <constraint firstItem="L6d-uy-iFF" firstAttribute="top" secondItem="D8O-zx-We6" secondAttribute="top" id="hsi-CR-7VM"/>
                             <constraint firstItem="u2B-m8-FUI" firstAttribute="centerX" secondItem="D8O-zx-We6" secondAttribute="centerX" id="kPD-U2-Bsl"/>
                             <constraint firstAttribute="trailing" secondItem="1aw-iW-Cfm" secondAttribute="trailing" id="pwx-r6-YxV"/>
                             <constraint firstItem="Gjp-0V-0HP" firstAttribute="top" secondItem="1aw-iW-Cfm" secondAttribute="bottom" id="rJl-xc-Sbz"/>
@@ -200,6 +207,7 @@
                     </view>
                     <connections>
                         <outlet property="dismissButton" destination="u2B-m8-FUI" id="Oe7-Af-aaa"/>
+                        <outlet property="highResImageView" destination="L6d-uy-iFF" id="UKB-Nf-ees"/>
                         <outlet property="posterImageView" destination="1aw-iW-Cfm" id="Jhi-aM-p3W"/>
                         <outlet property="scrollView" destination="oGE-yJ-4T1" id="VuL-cu-viU"/>
                     </connections>
