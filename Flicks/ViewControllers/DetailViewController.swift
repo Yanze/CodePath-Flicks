@@ -52,7 +52,7 @@ class DetailViewController: UIViewController {
         
         scrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
         
-        grayView = UIView(frame: CGRect(x: 20, y: scrollView.frame.height - 150, width: scrollView.frame.width - 40, height: 260))
+        grayView = UIView(frame: CGRect(x: 40, y: scrollView.frame.height - 150, width: scrollView.frame.width - 40, height: 260))
         grayView.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         scrollView.addSubview(grayView)
     }

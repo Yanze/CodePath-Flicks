@@ -16,7 +16,7 @@ protocol NetworkConnectionDelegate: NSObjectProtocol {
 
 class Helper: NSObject {
     static let sharedInstance = Helper()
-    var delegate: NetworkConnectionDelegate?
+    var delegates = [NetworkConnectionDelegate]()
     var hasConnection = Bool()
     var reachability = Reachability()!
     
@@ -32,24 +32,17 @@ class Helper: NSObject {
     func reachabilityChanged(note: NSNotification) {
         let reachability = note.object as! Reachability
         if reachability.isReachable {
-            if reachability.isReachableViaWiFi {
-                print("Reachable via WiFi")
-                hasConnection = true
-                if delegate != nil {
-                    delegate?.connectionBannerAnimateOut()
-                }
-            } else {
-                print("Reachable via Cellular")
-                hasConnection = true
-                if delegate != nil {
-                    delegate?.connectionBannerAnimateOut()
-                }
+            let networkType = reachability.isReachableViaWiFi ? "Wifi" : "Cellular"
+            print("Reachable via \(networkType)")
+            hasConnection = true
+            delegates.forEach {
+                $0.connectionBannerAnimateOut()
             }
         } else {
             print("Network not reachable")
             hasConnection = false
-            if delegate != nil {
-                delegate?.connectionBannerAnimateIn()
+            delegates.forEach {
+                $0.connectionBannerAnimateIn()
             }
         }
     }

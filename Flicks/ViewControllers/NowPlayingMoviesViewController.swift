@@ -15,14 +15,14 @@ class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDe
     var movies = [Movie]()
     @IBOutlet var warningBar: UIView!
     var searchController = UISearchController(searchResultsController: nil)
-    var filteredMovies = [Movie]()
+    var currentMovies = [Movie]()
     var detectedText = ""
     var transition = CircularTransition()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Helper.sharedInstance.delegate = self
+        Helper.sharedInstance.delegates.append(self)
         setRefreshMovieControl()
         setupSearchBar()
         
@@ -76,6 +76,7 @@ class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDe
         DispatchQueue.main.asyncAfter(deadline: when) { 
             APImanagerHelper.sharedInstance.getNowPlayingMoviesHelper { (movies) in
                 self.movies = movies
+                self.currentMovies = movies
                 self.tableView.reloadData()
                 SVProgressHUD.dismiss()
             }
@@ -88,6 +89,7 @@ class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDe
         DispatchQueue.main.asyncAfter(deadline: when) {
             APImanagerHelper.sharedInstance.getTopRatedMoviesHelper { (movies) in
                 self.movies = movies
+                self.currentMovies = movies
                 self.tableView.reloadData()
                 SVProgressHUD.dismiss()
             }
@@ -112,10 +114,7 @@ class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDe
     
     //MARK: tableview methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.isActive && searchController.searchBar.text != "" {
-            return filteredMovies.count
-        }
-        return self.movies.count
+        return currentMovies.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -124,13 +123,7 @@ class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDe
         let customColorView = UIView()
         customColorView.backgroundColor = UIColor(red: 254/255, green: 36/255, blue: 48/255, alpha: 0.4)
         cell.selectedBackgroundView = customColorView
-        
-        if searchController.isActive && searchController.searchBar.text != "" {
-            cell.movie = filteredMovies[indexPath.row]
-        }
-        else {
-            cell.movie = movies[indexPath.row]
-        }
+        cell.movie = currentMovies[indexPath.row]
         return cell
     }
     
@@ -138,7 +131,7 @@ class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDe
         let detailVC = self.storyboard!.instantiateViewController(withIdentifier: "DetailVC") as! DetailViewController
         detailVC.transitioningDelegate = self
         detailVC.modalPresentationStyle = .custom
-        detailVC.movie = self.movies[indexPath.row]
+        detailVC.movie = currentMovies[indexPath.row]
         self.present(detailVC, animated: true, completion: nil)
     }
     
@@ -152,7 +145,7 @@ class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDe
     func connectionBannerAnimateIn() {
         warningBar.frame.size.width = view.frame.size.width
         warningBar.center = view.center
-        warningBar.frame.origin.y = -69
+        warningBar.frame.origin.y = -(self.navigationController?.navigationBar.frame.height)!
         warningBar.alpha = 0
         view.addSubview(warningBar)
         UIView.animate(withDuration: 1) {
@@ -162,9 +155,9 @@ class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDe
     }
     
     func connectionBannerAnimateOut() {
-        UIView.animate(withDuration: 0.2) { 
+        UIView.animate(withDuration: 0.4) {
             self.warningBar.alpha = 0
-            self.warningBar.frame.origin.y = -69
+            self.warningBar.frame.origin.y = -(self.navigationController?.navigationBar.frame.height)!
         }
     }
     
@@ -174,8 +167,15 @@ class NowPlayingMoviesViewController: UITableViewController, NetworkConnectionDe
     }
     
     func filterContentForSearchText(searchText: String, scope: String = "All") {
-        filteredMovies = movies.filter { movie in
+        let filteredMovies = movies.filter { movie in
             return movie.title.lowercased().contains(searchText.lowercased())
+        }
+   
+        if searchController.isActive && searchController.searchBar.text != "" {
+            currentMovies = filteredMovies
+        }
+        else {
+            currentMovies = movies
         }
         tableView.reloadData()
     }
