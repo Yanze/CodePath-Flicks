@@ -2,7 +2,7 @@
 
 **Flicks** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **X** hours spent in total
+Time spent: **15** hours spent in total
 
 ## User Stories
 
@@ -24,9 +24,6 @@ The following **optional** features are implemented:
 - [ ] Customize the highlight and selection effect of the cell.
 - [x] Customize the navigation bar.
 
-The following **additional** features are implemented:
-
-- [ ] NSCache
 
 ## Video Walkthrough
 
