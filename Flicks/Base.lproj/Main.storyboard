@@ -17,6 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="WwW-mQ-jFY" kind="relationship" relationship="viewControllers" id="xfA-s9-0h7"/>
@@ -220,6 +221,6 @@
         <image name="warning" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IFN-HY-AbX"/>
+        <segue reference="KMW-Yy-033"/>
     </inferredMetricsTieBreakers>
 </document>

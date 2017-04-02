@@ -33,18 +33,17 @@ class DetailViewController: UIViewController {
     
     func setupScrollView() {
         let contentWidth = scrollView.bounds.width
-        let contentHeight = scrollView.bounds.height + 200
+        let contentHeight = scrollView.bounds.height + 100
         
         scrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
         
-        grayView = UIView(frame: CGRect(x: 40, y: scrollView.frame.height - 120, width: scrollView.frame.width - 40, height: 260))
+        grayView = UIView(frame: CGRect(x: 20, y: scrollView.frame.height - 150, width: scrollView.frame.width - 40, height: 260))
         grayView.backgroundColor = UIColor.black.withAlphaComponent(0.7)
         scrollView.addSubview(grayView)
     }
     
     func setupTitleLabel() {
         titleLabel = UILabel(frame: CGRect(x: 15, y: 10, width: grayView.frame.width-20, height: 20))
-
         titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
         titleLabel.textColor = .white
         titleLabel.text = movie.title
@@ -59,7 +58,7 @@ class DetailViewController: UIViewController {
             if imgResponse != nil {
                 self.posterImageView.alpha = 0
                 self.posterImageView.image = image
-                UIView.animate(withDuration: 0.5, animations: {
+                UIView.animate(withDuration: 0.2, animations: {
                     self.posterImageView.alpha = 1
                 })
             }else {

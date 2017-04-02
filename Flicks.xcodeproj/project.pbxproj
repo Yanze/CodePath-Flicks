@@ -12,7 +12,6 @@
 		E033285A1E8C195B0031C2E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E03328581E8C195B0031C2E9 /* Main.storyboard */; };
 		E033285C1E8C195B0031C2E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E033285B1E8C195B0031C2E9 /* Assets.xcassets */; };
 		E033285F1E8C195B0031C2E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E033285D1E8C195B0031C2E9 /* LaunchScreen.storyboard */; };
-		E03328671E8C1F330031C2E9 /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = E03328661E8C1F330031C2E9 /* config.plist */; };
 		E065C6CD1E8DB75D006A9469 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E065C6CB1E8DB75D006A9469 /* AFNetworking.framework */; };
 		E065C6CE1E8DB75D006A9469 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E065C6CC1E8DB75D006A9469 /* SVProgressHUD.framework */; };
 		E065C6D01E8DC38D006A9469 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E065C6CF1E8DC38D006A9469 /* Reachability.swift */; };
@@ -36,7 +35,6 @@
 		E033285B1E8C195B0031C2E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E033285E1E8C195B0031C2E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E03328601E8C195B0031C2E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E03328661E8C1F330031C2E9 /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
 		E065C6CB1E8DB75D006A9469 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "../../../Library/Developer/Xcode/DerivedData/Flicks-ccfbvwsdhklvkafqqfpedwhxzxvn/Build/Products/Debug-iphonesimulator/AFNetworking/AFNetworking.framework"; sourceTree = "<group>"; };
 		E065C6CC1E8DB75D006A9469 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = "Pods/../build/Debug-iphoneos/SVProgressHUD/SVProgressHUD.framework"; sourceTree = "<group>"; };
 		E065C6CF1E8DC38D006A9469 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 				E033285B1E8C195B0031C2E9 /* Assets.xcassets */,
 				E033285D1E8C195B0031C2E9 /* LaunchScreen.storyboard */,
 				E03328601E8C195B0031C2E9 /* Info.plist */,
-				E03328661E8C1F330031C2E9 /* config.plist */,
 				E0F2F0FD1E8F2CDE00C086B5 /* BaseCustomClass.swift */,
 			);
 			path = Flicks;
@@ -228,7 +225,6 @@
 			files = (
 				E033285F1E8C195B0031C2E9 /* LaunchScreen.storyboard in Resources */,
 				E033285C1E8C195B0031C2E9 /* Assets.xcassets in Resources */,
-				E03328671E8C1F330031C2E9 /* config.plist in Resources */,
 				E033285A1E8C195B0031C2E9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
