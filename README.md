@@ -26,7 +26,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [x] Animation: Customized Circular transition from tableview to detail view controller.
+- [x] Animation: Customized Circular Transition from tableview to detail view controller.
 
 ## Video Walkthrough
 
