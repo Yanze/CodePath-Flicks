@@ -39,7 +39,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-I need to learn more abour Auto Layout.
+I need to learn more about Auto Layout.
 
 ## License
 
